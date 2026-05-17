@@ -16,7 +16,11 @@ namespace Sauce_Demo.Pages
         }
 
         private IWebElement productSortContainer=> wait.Until(d=>d.FindElement(By.ClassName("product_sort_container")));
-        private ReadOnlyCollection<IWebElement> pricesTxt => driver.FindElements(By.ClassName("inventory_item_price"));
+        private ReadOnlyCollection<IWebElement> pricesElements =>wait.Until(d =>
+            {
+              var elements = d.FindElements(By.ClassName("inventory_item_price"));
+              return elements.Count > 0 ? elements : null;
+            });
 
 
 
@@ -30,7 +34,7 @@ namespace Sauce_Demo.Pages
         public bool ArePricesSortedLowToHigh()
         {
             var prices = new List<double>();
-            foreach (IWebElement e in pricesTxt)
+            foreach (IWebElement e in pricesElements)
             {
                 prices.Add(double.Parse((e.Text).Trim('$')));
             }
