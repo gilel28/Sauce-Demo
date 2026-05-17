@@ -30,7 +30,7 @@ namespace Sauce_Demo.Pages
             loginButton.Click();
         }
 
-        public string GetTextError()
+        public string GetErrorMessage()
         {
             TestContext.Progress.WriteLine("Fetching error message text");
             return errorMessage.Text;

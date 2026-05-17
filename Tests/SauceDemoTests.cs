@@ -1,4 +1,3 @@
-using OpenQA.Selenium.Support.UI;
 using Sauce_Demo.Pages;
 
 namespace Sauce_Demo.Tests
@@ -23,7 +22,7 @@ namespace Sauce_Demo.Tests
             loginPage.Login("standard_user", "not_secret_sauce");
 
             string expectedError = "Epic sadface: Username and password do not match any user in this service";
-            Assert.That(loginPage.GetTextError(), Is.EqualTo(expectedError));
+            Assert.That(loginPage.GetErrorMessage(), Is.EqualTo(expectedError));
         }
 
         [Test]
@@ -33,7 +32,7 @@ namespace Sauce_Demo.Tests
             loginPage.Login("locked_out_user", "secret_sauce");
 
             string expectedError = "Epic sadface: Sorry, this user has been locked out.";
-            Assert.That(loginPage.GetTextError(), Is.EqualTo(expectedError));
+            Assert.That(loginPage.GetErrorMessage(), Is.EqualTo(expectedError));
         }
 
         [Test]
