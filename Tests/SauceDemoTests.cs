@@ -1,7 +1,7 @@
 using OpenQA.Selenium.Support.UI;
 using Sauce_Demo.Pages;
 
-namespace Sauce_Demo
+namespace Sauce_Demo.Tests
 {
     public class SauceDemoTests : TestBase
     {

@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 
 
-namespace Sauce_Demo
+namespace Sauce_Demo.Tests
 {
     public class TestBase
     {
