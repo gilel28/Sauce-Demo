@@ -23,8 +23,6 @@ namespace Sauce_Demo.Tests
             loginPage.Login("standard_user", "not_secret_sauce");
 
             string expectedError = "Epic sadface: Username and password do not match any user in this service";
-
-            TestContext.Progress.WriteLine($"Asserting error message is exactly: '{expectedError}'");
             Assert.That(loginPage.GetTextError(), Is.EqualTo(expectedError));
         }
 
