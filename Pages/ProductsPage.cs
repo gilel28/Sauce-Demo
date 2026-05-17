@@ -16,7 +16,8 @@ namespace Sauce_Demo.Pages
         }
 
         private IWebElement productSortContainer=> wait.Until(d=>d.FindElement(By.ClassName("product_sort_container")));
-        private ReadOnlyCollection<IWebElement> pricesTxt => wait.Until(d=>d.FindElements(By.ClassName("inventory_item_price")));
+        private ReadOnlyCollection<IWebElement> pricesTxt => driver.FindElements(By.ClassName("inventory_item_price"));
+
 
 
         public void SortFromLowToHigh()
