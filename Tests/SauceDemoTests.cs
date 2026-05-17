@@ -35,8 +35,6 @@ namespace Sauce_Demo.Tests
             loginPage.Login("locked_out_user", "secret_sauce");
 
             string expectedError = "Epic sadface: Sorry, this user has been locked out.";
-
-            TestContext.Progress.WriteLine($"Asserting error message is exactly: '{expectedError}'");
             Assert.That(loginPage.GetTextError(), Is.EqualTo(expectedError));
         }
 
@@ -49,8 +47,6 @@ namespace Sauce_Demo.Tests
             Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/inventory.html"));
 
             productsPage.SortFromLowToHigh();
-
-            TestContext.Progress.WriteLine("Asserting that products are actually sorted from low to high");
             Assert.That(productsPage.ArePricesSortedLowToHigh(), Is.True);
         }
     }
