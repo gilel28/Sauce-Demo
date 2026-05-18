@@ -15,28 +15,17 @@ namespace Sauce_Demo.Tests
             productsPage = new ProductsPage(driver);
         }
 
-        [Test]
-        public void Test1_LoginWithInvalidPassword()
-        {
-            TestContext.Progress.WriteLine("Starting Test 1: Invalid Password");
-            loginPage.Login("standard_user", "not_secret_sauce");
 
-            string expectedError = "Epic sadface: Username and password do not match any user in this service";
+        [TestCase("standard_user", "not_secret_sauce", "Epic sadface: Username and password do not match any user in this service")]
+        [TestCase("locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out.")]
+        public void Login_Unsuccessful_ShowsExpectedErrorMessage(string username, string password, string expectedError)
+        {
+            loginPage.Login(username, password);
             Assert.That(loginPage.GetErrorMessage(), Is.EqualTo(expectedError));
         }
 
         [Test]
-        public void Test2_LoginWithLockedOutUser()
-        {
-            TestContext.Progress.WriteLine("Starting Test 2: Locked Out User");
-            loginPage.Login("locked_out_user", "secret_sauce");
-
-            string expectedError = "Epic sadface: Sorry, this user has been locked out.";
-            Assert.That(loginPage.GetErrorMessage(), Is.EqualTo(expectedError));
-        }
-
-        [Test]
-        public void Test3_LoginAndSortProducts()
+        public void LoginAndSortProducts()
         {
             TestContext.Progress.WriteLine("Starting Test 3: Successful Login & Sorting");
             loginPage.Login("standard_user", "secret_sauce");
