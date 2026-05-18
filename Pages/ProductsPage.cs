@@ -4,16 +4,12 @@ using System.Collections.ObjectModel;
 
 namespace Sauce_Demo.Pages
 {
-    public class ProductsPage
+    public class ProductsPage:BasePage
     {
-        private readonly IWebDriver driver;
-        private readonly WebDriverWait wait;
-
-        public ProductsPage(IWebDriver driver)
+        public ProductsPage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
         }
+
 
         private IWebElement productSortContainer=> wait.Until(d=>d.FindElement(By.ClassName("product_sort_container")));
         private ReadOnlyCollection<IWebElement> pricesElements =>wait.Until(d =>

@@ -4,15 +4,11 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Sauce_Demo.Pages
 {
-    public class LoginPage
+    public class LoginPage:BasePage
     {
-        private readonly IWebDriver driver;
-        private readonly WebDriverWait wait;
 
-        public LoginPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver):base(driver)
         {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
         }
 
         private IWebElement usernameTxt => wait.Until(d=>d.FindElement(By.Id("user-name")));
